@@ -1,0 +1,401 @@
+/* general */
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: "Average", serif;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #bbbbbb;
+}
+
+button {
+    background-color: #bbbbbb;
+    color: #02010f;
+    outline: 0;
+    border: 1px solid #02010f;
+    height: 30px;
+    border-radius: 10px;
+}
+button:hover {
+    background-color: #f3d3d3;
+    cursor: pointer;
+}
+.welcomeContainer {
+    width: 100%;
+    height: 100vh;
+    background-image: url("./cactus.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #bbbbbb;
+}
+.welcomeDiv {
+    position: absolute;
+    left: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100vh;
+
+    /* align-items: center; */
+}
+.welcomeDiv h1 {
+    font-family: "Montserrat", sans-serif;
+    border: 1px solid #02010f;
+    font-size: 80px;
+    padding: 10px;
+    /* margin-bottom: 100px; */
+}
+
+.signature {
+    padding-left: 100px;
+}
+
+.welcomeDiv a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.welcomeDiv a:hover {
+    color: #02010f;
+    background-color: #f4ca16;
+}
+
+.welcomeDiv button:hover {
+    background-color: #f4ca16;
+}
+
+/* main page */
+
+/* header */
+header {
+    width: 100%;
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    background-color: #1f262a;
+    color: #bbbbbb;
+    margin: 0px;
+}
+
+header h2 {
+    font-family: "Montserrat", sans-serif;
+    border: 1px solid whitesmoke;
+    font-size: 30px;
+    margin-left: 20px;
+    padding: 5px;
+}
+
+.rightHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    margin-right: 20px;
+}
+
+header img {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 100%;
+    border: 1px solid #1f262a;
+}
+
+header a {
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 5px;
+}
+header a:hover {
+    border: 1px solid whitesmoke;
+    color: #f3d3d3;
+}
+
+input {
+    border-radius: 60px;
+    border: none;
+    appearance: none;
+    outline: none;
+    padding-left: 5px;
+    margin: 5px;
+}
+
+.mainDiv {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: 100%-100px;
+    background-color: #bbbbbb;
+}
+
+.profile {
+    display: flex;
+}
+
+.txtProfile {
+    width: 400px;
+    margin: 20px;
+}
+
+.imgAndDeleteContainer {
+    display: flex;
+    flex-direction: column;
+}
+textarea {
+    width: 600px;
+    height: 200px;
+}
+
+.profile img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin: 30px;
+    border: 2px solid #1f262a;
+}
+
+.bio {
+}
+
+.bioText {
+    border: 1px solid #f3d3d3;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.deleteInProfile {
+    width: 90px;
+    font-size: 10px;
+    background-color: #bbbbbb;
+    color: #1f262a;
+    margin-left: 10px;
+    border: none;
+}
+
+.deleteInProfile:hover {
+    color: #1f262a;
+    background-color: #bbbbbb;
+    font-size: 16px;
+    width: 150px;
+    border: 1px solid whitesmoke;
+}
+
+/* findUsers */
+.findUsersContainer {
+    padding: 30px;
+}
+ul {
+    list-style: none;
+}
+
+.usersBox {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    text-decoration: none;
+}
+
+.usersBox:hover {
+    border: 1px solid #f3d3d3;
+}
+ul img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin: 20px;
+}
+
+ul p {
+    color: #1f262a;
+}
+
+/* modals */
+/* deletemodal */
+
+.friendsContainerInModal ul {
+    display: flex;
+    justify-content: center;
+}
+
+.friendsContainerInModal li {
+    margin: 10px;
+}
+
+.friendsContainerInModal p {
+    color: whitesmoke;
+}
+
+.friendsContainerInModal img {
+    width: 50px;
+    height: 50px;
+}
+.buttonsModal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonsModal button {
+    margin: 10px;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: scroll;
+    width: 100vw;
+    height: 100vh;
+}
+.imageModal,
+.deleteModal {
+    margin-top: 50px;
+    color: whitesmoke;
+    background-color: black;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    max-width: 800px;
+}
+
+.imgDiv img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.fileDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 300;
+    color: #00adef;
+    background-color: #1f262a;
+    display: inline-block;
+    opacity: 0.5;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    color: #f3d3d3;
+    cursor: pointer;
+}
+
+/* Friends page */
+
+.friendsPage {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* chat messages */
+.chatMsgsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chatMessages {
+    height: 400px;
+    width: 600px;
+    border: 1px solid black;
+    overflow-y: scroll;
+}
+
+.chatMessages li {
+    display: flex;
+}
+
+.chatMessages img {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+}
+
+.chatMsgsContainer textarea {
+    height: 100px;
+}
+
+.textingLink {
+    background-color: #bbbbbb;
+    color: #02010f;
+    text-decoration: none;
+    border: 1px solid #02010f;
+    height: 80px;
+    border-radius: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+.textingLink:hover {
+    background-color: #f3d3d3;
+    cursor: pointer;
+}
+
+.textedYou {
+    color: purple;
+    font-weight: bold;
+
+    animation: opacityPulse 1s ease-out;
+    animation-iteration-count: infinite;
+    opacity: 0;
+}
+
+@-webkit-keyframes opacityPulse {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.online {
+    color: #2f9c95;
+    font-weight: bold;
+}
+
+.check {
+    color: #9f00c5;
+    font-weight: bold;
+    animation: opacityPulse 1s ease-out;
+    animation-iteration-count: infinite;
+    opacity: 0;
+}
