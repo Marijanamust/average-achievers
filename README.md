@@ -1,4 +1,4 @@
-# Average achievers
+# Average achiever
 
 Social network for average achievers
 
@@ -12,7 +12,6 @@ A social network for average achievers is a single page application that I built
 -   [What I have?](#what-i-have)
 -   [Showroom](#showroom)
 -   [What I want?](#what-i-want)
--   [Why? - the story behind](#why)
 
 ## What I used? <a name="what-i-used"></a>
 
@@ -87,20 +86,10 @@ Created bonus features (outside general school requirement):
 
 ## <a name="what-i-want"></a>What I want?
 
-This project was supposed to be finished and presented in 6 days so I ignored some obvious functionalities not to lose time, especially the ones I have done before on other projects and I am sure I can easily do again.
-
 Next functionalities I want to add:
 
--   Develop profile - delete profile (automatically all hosted events), add interests sections
--   Develop event page - add discussion board, delete event by host - all attendees get a message that the event has been deleted
--   Develop users' connections - add Message host, show all messages with other users, block a user
-
-## <a name="why"></a>Why? - the story behind
-
-"From Dryanuary through to Sober October, this is the place to explore the world of sober possibilities. Attend events to meet other sober people, try something new, or find inspiration what to do today (and maybe go get wasted tomorrow). We don't judge, we inspire"
-
-When I started the web development bootcamp, I decided to have a break from alcohol so I can help my brain cope with such a large influx of information every day and not to waste time on brain-wrecking hangovers. Obviously, I haven't become smarter, just slightly more stressed but I did have a bit more time and for most of it I had to still be in a bar, listening to drunk friends and wondering what other alcohol free overpriced drink the bar might have and when is it ok to go home. There is just so much of Jever Fun that a person can take.
-
-When living in big cities, especially "party" places like Berlin, it is sometimes hard to socialise in any other manner than going to a bar, even up to a point where NOT binge drinking is seen as a weakness and a sign of the ultimate bore. It makes us more comfortable with people, it makes us want to talk to people, sometimes even for 10h (who would do that sober), it makes us actually like people or at least be able to stand them. It makes us feel great about ourselves and how much fun we are having. So we drink again. Cause all our friends are and cause that's what you do when you meet. Cause the work hours are done. Cause it's Friday. Cause it's any day of the week, does it really matter?
-
-When we started doing our final project, the teacher told us to think about something that you personally would like to use - and this was the first thing that came out. So I could find inspiration what to do and find other likeminded people on these events that are not slurring and telling me about that one special time they regret. On the other hand, this is not a platform to advise people against drinking [(that's these guys)](https://www.aa.org/), but just to give different options of having fun. Something that I would actually like to see.
+-   Show all private messages on another route
+-   Mobile responsiveness
+-   Get notification when friend comes online
+-   Create a wall on profile page where other users can post
+-   Show notification when a friend request arrives
