@@ -1,9 +1,7 @@
 import React from "react";
-// import axios from "axios";
 import Register from "./register";
 import { HashRouter, Route } from "react-router-dom";
 import Login from "./login";
-//Renders a welcome message, logo, and Registration component
 
 export default function() {
     return (

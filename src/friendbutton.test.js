@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "./axios";
-// import { useState, useEffect } from "react";
+
 import { FriendButton } from "./friendbutton";
 import { render, waitForElement } from "@testing-library/react";
 

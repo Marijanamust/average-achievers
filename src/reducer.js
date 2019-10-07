@@ -1,18 +1,6 @@
 import { parseDate } from "../utils/helpers";
 
 export default function reducer(state = {}, action) {
-    if (action.type === "ACTION_THAT_BLA") {
-        // then change redux state
-    }
-    if (action.type === "GET_ANIMALS") {
-        console.log("GET ANIMALS IN REDUCER", action);
-        // create a clone with different property, this is cloning with spread operator
-        state = {
-            ...state,
-            cuteAnimals: action.cuteAnimals
-        };
-        // cuteanimals on the left you can call whatever you want cause we are defining first time
-    }
     if (action.type === "GET_FRIENDS") {
         state = {
             ...state,

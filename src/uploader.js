@@ -12,7 +12,6 @@ export class Uploader extends React.Component {
     }
     addFile(e) {
         this.file = e.target.files[0];
-        console.log(this.file);
     }
     async changeAvatar(e) {
         e.preventDefault();
@@ -20,10 +19,7 @@ export class Uploader extends React.Component {
         formData.append("file", this.file);
         try {
             const response = await axios.post("/upload", formData);
-            console.log(
-                "response from post upload ",
-                response.data[0].imageurl
-            );
+
             this.props.updatePic(response.data[0].imageurl);
         } catch (error) {
             console.log(error);

@@ -1,20 +1,5 @@
 import axios from "./axios";
 
-export function example() {
-    return {
-        type: "ACTION_THAT_BLA"
-    };
-}
-
-export function getCuties() {
-    return axios.get("/cuties.json").then(({ data }) => {
-        return {
-            type: "GET_FRIENDS",
-            allFriends: data
-        };
-    });
-}
-
 export function getFriends() {
     return axios.get("/friends-wannabes").then(({ data }) => {
         return {

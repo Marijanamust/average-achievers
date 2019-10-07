@@ -11,8 +11,6 @@ export function DeleteProfile({ first, last, user_id, imageUrl, showDelete }) {
         dispatch(getFriends());
     }, []);
     const friends = useSelector(state => {
-        console.log("IN SELECTOR", state.allFriends);
-
         return (
             state.allFriends &&
             state.allFriends.filter(friend => {
@@ -26,7 +24,6 @@ export function DeleteProfile({ first, last, user_id, imageUrl, showDelete }) {
         axios
             .post("/deleteuser")
             .then(() => {
-                console.log("Deleted");
                 document.location.reload();
             })
             .catch(error => {

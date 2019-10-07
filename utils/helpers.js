@@ -35,5 +35,12 @@ exports.parseDate = function(created_at) {
     if (diff <= 777600) {
         return "1 week ago";
     }
-    return "on " + date;
+    return (
+        "on " +
+        date.getDate() +
+        "/" +
+        date.getMonth() +
+        "/" +
+        date.getFullYear()
+    );
 };

@@ -3,19 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFriends } from "./actions";
 import { Link } from "react-router-dom";
 import { unfriend, acceptFriendRequest } from "./actions";
-import { socket } from "./socket";
-import { useState } from "react";
 
 export function Friends(props) {
     const dispatch = useDispatch();
-    // const [senderId, setSenderId] = useState(props.textSenderId);
+
     useEffect(() => {
         dispatch(getFriends());
-        // return ()=>{
-        //     props.resetList
-        // }
     }, []);
-    // const userIds=
 
     const wannabes = useSelector(state => {
         return (
@@ -27,8 +21,6 @@ export function Friends(props) {
     });
 
     const friends = useSelector(state => {
-        // console.log("IN SELECTOR", state.allFriends);
-
         return (
             state.allFriends &&
             state.allFriends.filter(friend => {

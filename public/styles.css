@@ -38,15 +38,12 @@ button:hover {
     flex-direction: column;
     justify-content: space-around;
     height: 100vh;
-
-    /* align-items: center; */
 }
 .welcomeDiv h1 {
     font-family: "Montserrat", sans-serif;
     border: 1px solid #02010f;
     font-size: 80px;
     padding: 10px;
-    /* margin-bottom: 100px; */
 }
 
 .signature {
@@ -65,6 +62,10 @@ button:hover {
 
 .welcomeDiv button:hover {
     background-color: #f4ca16;
+}
+
+.welcomeDiv p {
+    font-size: 20px;
 }
 
 /* main page */

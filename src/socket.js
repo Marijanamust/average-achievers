@@ -17,8 +17,5 @@ export function init(store) {
             console.log("GOT ALL TEXTS FROM OTHER GUY");
             store.dispatch(getPrivateMessages(data));
         });
-        // socket.on("chatMessages", msgs => store.dispatch(chatMessages(msgs)));
-        //
-        // socket.on("chatMessage", msg => store.dispatch(chatMessage(msg)));
     }
 }

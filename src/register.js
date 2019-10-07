@@ -23,15 +23,11 @@ export default class Register extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        // console.log("It has been clicked");
-        // console.log("THIS STATE", this.state);
+
         axios
             .post("/welcome", this.state)
             .then(response => {
-                console.log(response);
                 if (response.data === true) {
-                    // this.setState({ error: false });
-                    console.log(response.data);
                     location.replace("/");
                 } else {
                     this.setState({ error: true });
@@ -39,7 +35,6 @@ export default class Register extends React.Component {
             })
             .catch(error => {
                 console.log("error in post", error);
-                // me.showErrorMod = true;
             });
     }
 

@@ -3,15 +3,12 @@ import { socket } from "./socket";
 import { useSelector } from "react-redux";
 
 export function Chat() {
-    // const chatMessages = useSelector(state => state && state.chatMessages);
     console.log("here are my last chat messages");
 
     const keyCheck = e => {
-        console.log(e.key);
-        // enter
         if (e.key === "Enter") {
             e.preventDefault();
-            console.log(e.target.value);
+
             socket.emit("singleMessage", e.target.value);
             e.target.value = "";
         }
@@ -25,11 +22,6 @@ export function Chat() {
 
     useEffect(
         () => {
-            console.log("chat mounted");
-            console.log("elemref", elemRef.current);
-            console.log("scroll top", elemRef.current.scrollTop);
-            console.log("scroll height", elemRef.current.scrollHeight);
-            console.log("clientHeight", elemRef.current.clientHeight);
             elemRef.current.scrollTop =
                 elemRef.current.scrollHeight - elemRef.current.clientHeight;
         },

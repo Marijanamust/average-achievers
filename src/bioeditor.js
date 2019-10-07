@@ -35,11 +35,9 @@ export class BioEditor extends React.Component {
     }
     async updateBio(e) {
         e.preventDefault();
-        console.log(this.state.draftbio);
-
         try {
             const bioResponse = await axios.post("/bio", this.state);
-            console.log(bioResponse);
+
             this.props.setBio(bioResponse.data[0].bio);
             this.showEditBio();
         } catch (err) {

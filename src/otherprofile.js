@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "./axios";
-import { Link } from "react-router-dom";
+
 import { FriendButton } from "./friendbutton";
 
 export class OtherProfile extends React.Component {
@@ -15,7 +15,6 @@ export class OtherProfile extends React.Component {
         };
     }
     async componentDidMount() {
-        console.log("Other Profile mounted");
         try {
             const userData = await axios.get(
                 "/api/users/" + this.props.match.params.id
@@ -37,7 +36,6 @@ export class OtherProfile extends React.Component {
         } catch (error) {
             console.log("error in post", error);
         }
-        // console.log("ONLINE", this.state.onlineUsers);
     }
     render() {
         var imageurl = this.state.imageUrl || "/sheep.jfif";

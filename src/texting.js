@@ -5,12 +5,8 @@ import { getFriends } from "./actions";
 import { getPrivateMessages } from "./actions";
 
 export function Texting({ removeMessage, otheruser }) {
-    // const chatMessages = useSelector(state => state && state.chatMessages);
     const dispatch = useDispatch();
 
-    // let otheruser = window.location.pathname.replace("/texting/", "");
-    // let otheruser = this.props.match.params.otheruser;
-    console.log("MAtch", otheruser);
     const keyCheck = e => {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -19,14 +15,11 @@ export function Texting({ removeMessage, otheruser }) {
                 receiver_id: otheruser
             };
             socket.emit("new text", textInfo);
-            // socket.sockets[recipientSocketId].emit("new text", e.target.value);
+
             e.target.value = "";
         }
     };
 
-    // const online = useSelector(state => {
-    //     return state.onlineUsers;
-    // });
     const elemRef = useRef();
 
     const privateTexts = useSelector(state => {
@@ -49,7 +42,6 @@ export function Texting({ removeMessage, otheruser }) {
             elemRef.current.scrollHeight - elemRef.current.clientHeight;
         socket.emit("get texts", otheruser);
         socket.on("check texts", data => {
-            console.log("DATA", data);
             let check = data.find(message => {
                 return message.id == otheruser;
             });

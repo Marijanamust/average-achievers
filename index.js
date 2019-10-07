@@ -98,7 +98,6 @@ app.get("/welcome", (req, res) => {
 });
 
 app.post("/welcome", function(req, res) {
-    // console.log(req.body);
     if (!req.body.password) {
         res.json(false);
     } else {
@@ -129,7 +128,7 @@ app.post("/login", function(req, res) {
                             user_id: data.id,
                             name: data.first
                         };
-                        // console.log(req.session.user);
+
                         res.json(true);
                     } else {
                         res.json(false);
@@ -147,7 +146,6 @@ app.post("/login", function(req, res) {
 });
 
 app.get("/user", async (req, res) => {
-    // console.log(req.session.user.user_id);
     try {
         const data = await getUser(req.session.user.user_id);
 
@@ -158,10 +156,6 @@ app.get("/user", async (req, res) => {
 });
 
 app.post("/upload", uploader.single("file"), s3.upload, async (req, res) => {
-    // req.file refers to the file that was just uploaded
-    // req.body still refers to the values we type in the input fields
-    // const { filename } = req.file;
-
     const url =
         config.s3Url + `${req.session.user.user_id}/${req.file.filename}`;
 
@@ -223,13 +217,12 @@ app.get("/last/users", async (req, res) => {
 });
 
 app.get("/last/users/:match", async (req, res) => {
-    // console.log("REQ PARAMS", req.params.match);
     try {
         const matchingUsers = await getMatchingUsers(
             req.params.match,
             req.session.user.user_id
         );
-        console.log("MATCHING", matchingUsers);
+
         res.json(matchingUsers);
     } catch (error) {
         console.log(error);
@@ -301,12 +294,10 @@ app.post("/cancel", (req, res) => {
 });
 
 app.post("/accept", (req, res) => {
-    // console.log("REQ BODY", req.body);
     const profile_id = req.session.user.user_id;
     const other_id = req.body.id;
     acceptFriendRequest(profile_id, other_id)
         .then(data => {
-            console.log("Accepted");
             res.json({
                 button: "Unfriend"
             });
@@ -323,7 +314,6 @@ app.post("/unfriend", (req, res) => {
     const other_id = req.body.id;
     unfriend(profile_id, other_id)
         .then(data => {
-            // console.log("UNFRIENDED");
             res.json({
                 button: "Send friend request"
             });
@@ -340,8 +330,6 @@ app.post("/deleteuser", (req, res) => {
         deleteprofile(req.session.user.user_id)
     ])
         .then(() => {
-            // io.socket.emit("singleMessage");
-
             req.session = null;
             res.json(true);
         })
@@ -361,12 +349,6 @@ app.get("/friends-wannabes", (req, res) => {
         });
 });
 
-app.get("/test", function(req, res) {
-    res.sendStatus(200);
-    io.emit("achtung", { msg: "you look good" });
-});
-
-//this route always needs to be last, out everything above it..
 app.get("*", function(req, res) {
     if (!req.session.user) {
         res.redirect("/welcome");
@@ -380,41 +362,20 @@ server.listen(8080, function() {
     console.log("I'm listening.");
 });
 
-// io.on("connection", socket => {
-//     console.log(`A socket with the id ${socket.id}`);
-//     io.sockets.sockets["dfyx"].emit("hiFriedman");
-//     socket.emit("hi", {
-//         msg: "Hello there"
-//     });
-//     socket.on("howareyo", ({ msg }) => console.log(msg));
-//     socket.on("disconnect", () => {
-//         console.log(`A socket with the id ${socket.id} disconnected`);
-//     });
-// });
-
 io.on("connection", function(socket) {
-    // console.log(`A socket with the id ${socket.id}`);
-
-    // if the user is not logged in - cant user sockets
-
     const user_id = socket.request.session.user.user_id;
     if (!user_id) {
         return socket.disconnect(true);
     }
 
     onlineUsers[socket.id] = user_id;
-    // could create a chat message object or use the data from above query
 
     let onlineUsersIds = Object.values(onlineUsers);
-    console.log("Online users: ", onlineUsersIds);
+
     io.sockets.emit("online users", onlineUsersIds);
-    // io.sockets.sockets[socket.id].broadcast.emit(
-    //     "online users",
-    //     onlineUsersIds
-    // );
+
     getChatMessages()
         .then(data => {
-            // console.log(data);
             const reverseData = data.reverse();
             io.sockets.emit("ten messages", reverseData);
         })
@@ -424,18 +385,15 @@ io.on("connection", function(socket) {
 
     socket.on("get texts", otheruser => {
         getPrivateMessages(user_id, otheruser).then(data => {
-            console.log("GETTING TEXTS", data);
             const reverseData = data.reverse();
             socket.emit("all texts", reverseData);
         });
     });
 
     socket.on("singleMessage", msg => {
-        console.log("Message:", msg);
         insertMessage(user_id, msg, null)
             .then(() => {
                 getChatMessages().then(data => {
-                    // console.log(data);
                     const reverseData = data.reverse();
                     io.sockets.emit("ten messages", reverseData);
                 });
@@ -443,15 +401,12 @@ io.on("connection", function(socket) {
             .catch(error => {
                 console.log(error);
             });
-        // io.sockets.emit("message from server", msg);
     });
 
     socket.on("new text", msg => {
         insertMessage(user_id, msg.text, msg.receiver_id)
             .then(() => {
                 getPrivateMessages(user_id, msg.receiver_id).then(data => {
-                    // console.log(data);
-
                     const reverseData = data.reverse();
                     for (let property in onlineUsers) {
                         if (onlineUsers[property] == msg.receiver_id) {
@@ -476,17 +431,10 @@ io.on("connection", function(socket) {
     });
 
     socket.on("disconnect", function() {
-        // const user_id = socket.request.session.user.user_id;
-        // onlineUsers[socket.id] = user_id;
-
         delete onlineUsers[socket.id];
-        console.log("we are in disconnect");
+
         let onlineUsersIds = Object.values(onlineUsers);
-        // io.sockets.sockets[socket.id].broadcast.emit(
-        //     "online users",
-        //     onlineUsersIds
-        // );
+
         io.sockets.emit("online users", onlineUsersIds);
-        // could create a chat message object or use the data from above query
     });
 });
